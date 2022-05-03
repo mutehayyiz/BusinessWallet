@@ -1,0 +1,13 @@
+{
+  "host": "",
+  "port": 4242,
+  "api_secret": "example_api_secret",
+  "storage": {
+    "type": "postgresql",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "db": "BWallet"
+  }
+}
