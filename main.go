@@ -5,6 +5,7 @@ import (
 	"BusinessWallet/controller"
 	"BusinessWallet/middleware"
 	"BusinessWallet/storage"
+	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 	"net/http"
@@ -33,7 +34,8 @@ func main() {
 
 	router := GenerateRoutes()
 
-	err = http.ListenAndServe(":4242", router)
+	logrus.Info("listening on port: ", config.Global.Port)
+	err = http.ListenAndServe(fmt.Sprintf(":%d", config.Global.Port), router)
 	if err != nil {
 		panic(err)
 	}

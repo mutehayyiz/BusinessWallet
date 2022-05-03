@@ -31,18 +31,18 @@ func Connect(options config.StorageOptions) error {
 		options.DB,
 	)
 
-	dbClient, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		return err
 	}
 
-	err = dbClient.AutoMigrate(&model.User{}, &model.Event{})
+	err = db.AutoMigrate(&model.User{}, &model.Event{})
 	if err != nil {
 		return err
 	}
 
-	User = UserDB{db: dbClient}
-	Event = EventDB{db: dbClient}
+	User = UserDB{db: db}
+	Event = EventDB{db: db}
 
 	return nil
 }
