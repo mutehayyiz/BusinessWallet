@@ -10,7 +10,7 @@ RUN CGO_ENABLED=0 go build -o /bin/server
 
 FROM scratch
 WORKDIR /bin/BusinessWallet/
-COPY --from=builder /BusinessWallet/config.json ./config.json
+COPY --from=builder /BusinessWallet/config.docker.json ./config.json
 COPY --from=builder /bin/server ./server
 EXPOSE 4242
 CMD ["./server"]
