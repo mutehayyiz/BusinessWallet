@@ -15,7 +15,7 @@ type User struct {
 	Surname  string        `json:"surname"`
 	Phone    string        `json:"phone" gorm:"index:idx_users_phone,unique"`
 	Password string        `json:"password"`
-	Email    string        `json:"email" gorm:"index:idx_users_phone,unique"`
+	Email    string        `json:"email" gorm:"index:idx_users_email,unique"`
 	Linkedin string        `json:"linkedin"`
 	Company  string        `json:"company"`
 	Contacts pq.Int64Array `json:"contacts" gorm:"type:integer[]"`
