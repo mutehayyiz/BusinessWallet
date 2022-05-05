@@ -87,6 +87,10 @@ func (Auth) Login(w http.ResponseWriter, r *http.Request) {
 	ReturnResponse(w, http.StatusOK, resp)
 }
 
+func (a Auth) VerifyToken(w http.ResponseWriter, r *http.Request) {
+	ReturnResponse(w, http.StatusOK, "ok")
+}
+
 /*
 func (Auth) RefreshToken(w http.ResponseWriter, r *http.Request) {
 	claims, _ := r.Context().Value("claims").(*auth.Claims)

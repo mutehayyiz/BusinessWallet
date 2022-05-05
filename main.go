@@ -48,6 +48,8 @@ func GenerateRoutes() *mux.Router {
 
 	r.HandleFunc("/register", auth.Register).Methods(http.MethodPost)
 	r.HandleFunc("/login", auth.Login).Methods(http.MethodPost)
+	r.HandleFunc("/verify_token", middleware.Auth(auth.VerifyToken)).Methods(http.MethodPost)
+
 	r.HandleFunc("/delete", controller.DeleteAll).Methods(http.MethodDelete)
 	r.HandleFunc("/seed", controller.Seed).Methods(http.MethodGet)
 
