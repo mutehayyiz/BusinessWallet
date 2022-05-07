@@ -13,9 +13,9 @@ type User struct {
 	gorm.Model
 	Name     string        `json:"name"`
 	Surname  string        `json:"surname"`
-	Phone    string        `json:"phone" gorm:"index:idx_users_phone,unique"`
+	Email    string        `json:"email" gorm:"index:idx_email,unique"`
 	Password string        `json:"password"`
-	Email    string        `json:"email" gorm:"index:idx_users_email,unique"`
+	Phone    string        `json:"phone" gorm:"index:idx_phone,unique"`
 	Linkedin string        `json:"linkedin"`
 	Company  string        `json:"company"`
 	Contacts pq.Int64Array `json:"contacts" gorm:"type:integer[]"`
@@ -57,8 +57,13 @@ func (r RegisterRequest) Validate() error {
 	if r.Password == "" {
 		return errors.New("password is required")
 	}
+
+	if len(r.Password) < 6 {
+		return errors.New("min password length is 6")
+	}
+
 	if r.Phone == "" {
-		return errors.New("phone is required")
+		return errors.New("password is required")
 	}
 
 	if err := checkmail.ValidateFormat(r.Email); err != nil {
@@ -76,12 +81,12 @@ type LoginRequest struct {
 func (r LoginRequest) Validate() error {
 	r.Email = html.EscapeString(strings.TrimSpace(r.Email))
 
-	if r.Password == "" {
-		return errors.New("password is required")
-	}
-
 	if err := checkmail.ValidateFormat(r.Email); err != nil {
 		return errors.New("invalid email")
+	}
+
+	if r.Password == "" {
+		return errors.New("password is required")
 	}
 
 	return nil

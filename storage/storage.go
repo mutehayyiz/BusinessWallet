@@ -3,6 +3,7 @@ package storage
 import (
 	"BusinessWallet/config"
 	"BusinessWallet/model"
+	"encoding/json"
 	"fmt"
 	"github.com/sirupsen/logrus"
 	"gorm.io/driver/postgres"
@@ -49,12 +50,12 @@ func Connect(options config.StorageOptions) error {
 
 func Seed() {
 	registerRequests := []model.RegisterRequest{
-		{Name: "ahmet", Surname: "Şenharputlu", Email: "ahmet@test.com", Phone: "91864198274", Password: "test"},
-		{Name: "gizem", Surname: "bulut", Email: "gizem@test.com", Phone: "91864198244", Password: "test"},
-		{Name: "damla", Surname: "damla", Email: "damla@test.com", Phone: "91864298274", Password: "test"},
-		{Name: "zeynep", Surname: "emre", Email: "zeynep@test.com", Phone: "91864198274", Password: "test"},
-		{Name: "emre", Surname: "iuc", Email: "emre@test.com", Phone: "91864118274", Password: "test"},
-		{Name: "mira", Surname: "hello", Email: "mira@test.com", Phone: "91864198234", Password: "test"},
+		{Name: "ahmet", Surname: "Şenharputlu", Email: "ahmet@test.com", Phone: "91864198274", Password: "testpsw"},
+		{Name: "gizem", Surname: "bulut", Email: "gizem@test.com", Phone: "91864198244", Password: "testpsw"},
+		{Name: "damla", Surname: "damla", Email: "damla@test.com", Phone: "91864298274", Password: "testpsw"},
+		{Name: "zeynep", Surname: "emre", Email: "zeynep@test.com", Phone: "941864198274", Password: "testpsw"},
+		{Name: "emre", Surname: "iuc", Email: "emre@test.com", Phone: "91864118274", Password: "testpsw"},
+		{Name: "mira", Surname: "hello", Email: "mira@test.com", Phone: "91864198234", Password: "testpsw"},
 	}
 
 	userList := make([]*model.User, 0)
@@ -79,6 +80,8 @@ func Seed() {
 	eventList := make([]*model.Event, 0)
 
 	for _, e := range createEventRequests {
+		x, _ := json.Marshal(e.Start)
+		fmt.Println(string(x))
 		event, err := Event.Create(&e, int(userList[0].ID))
 		if event == nil || err != nil {
 			logrus.WithError(err).Error("event create: ")

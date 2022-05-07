@@ -41,7 +41,17 @@ func (u UserDB) Login(r *model.LoginRequest) (*model.User, error) {
 	}
 
 	if !checkPassword(r.Password, user.Password) {
-		return nil, errors.New("wrong phone or pass")
+		return nil, errors.New("wrong email or pass")
+	}
+
+	return user, nil
+}
+
+func (u UserDB) GetUser(id int) (*model.User, error) {
+	var user *model.User
+	err := u.db.Model(user).Where("id = ?", id).Find(&user).Error
+	if err != nil {
+		return nil, err
 	}
 
 	return user, nil

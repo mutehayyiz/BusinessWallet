@@ -69,8 +69,9 @@ func GenerateRoutes() *mux.Router {
 
 	user := controller.User{}
 
-	api.HandleFunc("/user/contact/{id}", middleware.Auth(user.Contact)).Methods(http.MethodGet)
-	api.HandleFunc("/user/contact/{id}", middleware.Auth(user.Contact)).Methods(http.MethodDelete)
+	api.HandleFunc("/user/me", middleware.Auth(user.Me)).Methods(http.MethodGet)
+	api.HandleFunc("/user/contact/{id}", middleware.Auth(user.AddOrDeleteContact)).Methods(http.MethodPost)
+	api.HandleFunc("/user/contact/{id}", middleware.Auth(user.AddOrDeleteContact)).Methods(http.MethodDelete)
 
 	return r
 }
