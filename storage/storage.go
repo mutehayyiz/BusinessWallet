@@ -73,8 +73,8 @@ func Seed() {
 	createEventRequests := []model.CreateEventRequest{
 		{Name: "Meet", Description: "lets meet, it is passed, and you were attending !", Start: time.Now().Add(time.Hour * -12), Finish: time.Now().Add(time.Hour * -12)},
 		{Name: "Aws Conference", Description: "it is current (now), and you are attending!", Start: time.Now().Add(time.Hour * -6), Finish: time.Now().Add(time.Hour * 12)},
-		{Name: "Security Event", Description: "its active and ghonna start after a while, and you are attending!", Start: time.Now().Add(time.Hour * 12), Finish: time.Now().Add(time.Hour * 24)},
-		{Name: "Fair Event", Description: "its ghonna start after a while, and you are not attending!", Start: time.Now().Add(time.Hour * 12), Finish: time.Now().Add(time.Hour * 24)},
+		{Name: "Security Event", Description: "its active and gonna start after a while, and you are attending!", Start: time.Now().Add(time.Hour * 12), Finish: time.Now().Add(time.Hour * 24)},
+		{Name: "Fair Event", Description: "its gonna start after a while, and you are not attending!", Start: time.Now().Add(time.Hour * 12), Finish: time.Now().Add(time.Hour * 24)},
 	}
 
 	eventList := make([]*model.Event, 0)
