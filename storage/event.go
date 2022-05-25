@@ -50,17 +50,17 @@ func (e EventDB) Leave(eventId string, userID int) error {
 }
 
 func (e EventDB) Past(id int) (events []*model.Event, err error) {
-	err = e.db.Model(model.Event{}).Where("? = ANY(attendees) and finish <= ?", id, time.Now()).Take(&events).Error
+	err = e.db.Model(model.Event{}).Where("? = ANY(attendees) and finish <= ?", id, time.Now()).Find(&events).Error
 	return
 }
 
 func (e EventDB) Active() (events []*model.Event, err error) {
-	err = e.db.Model(model.Event{}).Where("start >= ?", time.Now()).Take(&events).Error
+	err = e.db.Model(model.Event{}).Where("start >= ?", time.Now()).Find(&events).Error
 	return
 }
 
 func (e EventDB) Now(id int) (events []*model.Event, err error) {
-	err = e.db.Model(model.Event{}).Where("? = ANY(attendees) and finish >= ? and start <= ? ", id, time.Now(), time.Now()).Take(&events).Error
+	err = e.db.Model(model.Event{}).Where("? = ANY(attendees) and finish >= ? and start <= ? ", id, time.Now(), time.Now()).Find(&events).Error
 	return
 }
 
