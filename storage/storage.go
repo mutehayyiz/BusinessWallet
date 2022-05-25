@@ -50,12 +50,12 @@ func Connect(options config.StorageOptions) error {
 
 func Seed() {
 	registerRequests := []model.RegisterRequest{
-		{Name: "ahmet", Surname: "Şenharputlu", Email: "ahmet@test.com", Phone: "91864198274", Password: "testpsw"},
-		{Name: "gizem", Surname: "bulut", Email: "gizem@test.com", Phone: "91864198244", Password: "testpsw"},
-		{Name: "damla", Surname: "damla", Email: "damla@test.com", Phone: "91864298274", Password: "testpsw"},
-		{Name: "zeynep", Surname: "emre", Email: "zeynep@test.com", Phone: "941864198274", Password: "testpsw"},
-		{Name: "emre", Surname: "iuc", Email: "emre@test.com", Phone: "91864118274", Password: "testpsw"},
-		{Name: "mira", Surname: "hello", Email: "mira@test.com", Phone: "91864198234", Password: "testpsw"},
+		{Name: "ahmet", Surname: "Şenharputlu", Email: "ahmet@test.com", Phone: "91864198274", Password: "testpsw", Company: "BWallet", Position: "Go Engineer"},
+		{Name: "gizem", Surname: "bulut", Email: "gizem@test.com", Phone: "91864198244", Password: "testpsw", Company: "BWallet", Position: "Flutter Expert"},
+		{Name: "damla", Surname: "damla", Email: "damla@test.com", Phone: "91864298274", Password: "testpsw", Company: "BWallet", Position: "Flutter Expert"},
+		{Name: "zeynep", Surname: "emre", Email: "zeynep@test.com", Phone: "941864198274", Password: "testpsw", Company: "BWallet", Position: "Flutter Expert"},
+		{Name: "emre", Surname: "iuc", Email: "emre@test.com", Phone: "91864118274", Password: "testpsw", Company: "BWallet", Position: "Flutter Expert"},
+		{Name: "mira", Surname: "hello", Email: "mira@test.com", Phone: "91864198234", Password: "testpsw", Company: "BWallet", Position: "Flutter Expert"},
 	}
 
 	userList := make([]*model.User, 0)
