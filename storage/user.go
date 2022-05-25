@@ -22,6 +22,7 @@ func (u UserDB) Register(r *model.RegisterRequest) (*model.User, error) {
 		Email:    r.Email,
 		Linkedin: r.Linkedin,
 		Company:  r.Company,
+		Position: r.Position,
 		Contacts: make(pq.Int64Array, 0),
 	}
 
