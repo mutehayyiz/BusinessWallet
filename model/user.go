@@ -18,6 +18,7 @@ type User struct {
 	Phone    string        `json:"phone" gorm:"index:idx_phone,unique"`
 	Linkedin string        `json:"linkedin"`
 	Company  string        `json:"company"`
+	Position string        `json:"position"`
 	Contacts pq.Int64Array `json:"contacts" gorm:"type:integer[]"`
 }
 
