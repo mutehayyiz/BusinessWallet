@@ -39,6 +39,7 @@ type RegisterRequest struct {
 	Email    string `json:"email"`
 	Linkedin string `json:"linkedin"`
 	Company  string `json:"company"`
+	Position string `json:"position"`
 }
 
 func (r RegisterRequest) Validate() error {
