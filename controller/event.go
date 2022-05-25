@@ -5,6 +5,7 @@ import (
 	"BusinessWallet/model"
 	"BusinessWallet/storage"
 	"encoding/json"
+	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
@@ -149,6 +150,7 @@ func (e Event) Now(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println(events)
 	logrus.Infof("events, %+v", events)
 	ReturnResponse(w, http.StatusOK, events)
 }
